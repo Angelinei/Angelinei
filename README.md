@@ -23,24 +23,6 @@ I evaluate AI systems through both a **human-learning** and **product** lens:
 
 **Skillxtube** — an AI-powered learning ecosystem that transforms online content into structured learning paths.
 
-**AI Evaluation Portfolio** — practical evaluation frameworks and case studies covering AI tutoring, conversational behavior and learning content auditing.
-
-## Selected work
-
-### AI Tutor Evaluation
-
-A rubric-based framework for evaluating AI-generated educational responses across accuracy, pedagogical coherence, cognitive load, feedback quality and learner adaptation.
-
-### Conversational AI Behavioral Evaluation
-
-A structured methodology for analyzing long-context conversational behavior, persona consistency, emotional and self-referential outputs, instruction following and anthropomorphic patterns.
-
-> Observed conversational behavior does not constitute evidence of subjective consciousness.
-
-### AI Learning Content Audit
-
-An approach to detecting obsolete, redundant, inconsistent or missing elements in educational content using document processing and LLM-based analysis.
-
 ## Background
 
 **Founder & AI Product Builder — Skillxtube**
