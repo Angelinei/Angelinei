@@ -1,23 +1,8 @@
 # Angéline Poitout
 
-### AI Trainer & Evaluator · LLM Evaluation · Conversational AI · Learning & EdTech
+### Learning & EdTech
 
-I work at the intersection of **AI, learning and product development**.
-
-My background is in instructional design, learning engineering, EdTech and digital product development. I now focus on **training and evaluating AI systems**, with particular interest in learning, conversational AI and human-AI interaction.
-
-I evaluate AI systems through both a **human-learning** and **product** lens:
-
-* LLM output quality
-* Instruction following
-* AI tutoring and educational reasoning
-* Conversational behavior
-* Behavioral consistency
-* Evaluation rubrics
-* Human-AI interaction
-* Learning content quality
-* AI-generated content
-* AI agents and LLM applications
+When Edtech meet AI
 
 ## Currently building
 
