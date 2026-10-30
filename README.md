@@ -28,3 +28,4 @@ Experience across EdTech, digital products, content, marketing and project manag
 * Website: https://angelinepoitout.com
 * LinkedIn: https://linkedin.com/AngelinePoitout
 * Skillxtube: https://skillxtube.com
+* Skillxgames: https://skillxgames.com/
