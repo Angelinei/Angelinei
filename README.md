@@ -6,6 +6,7 @@ When Edtech meet AI
 
 ## Currently building
 
+**Skillxgames** - A retro arcade sauce Edutainment - 299 games, a community, a feed, record everything, adopt a dragon... Adult swim inspiration direction, small games for sharp minds.
 **Skillxtube** — an AI-powered learning ecosystem that transforms online content into structured learning paths.
 
 ## Background
