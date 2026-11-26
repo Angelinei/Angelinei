@@ -11,6 +11,7 @@ In CI:         see .github/workflows/profile.yml (runs every night)
 from __future__ import annotations
 
 import datetime as dt
+import base64
 import json
 import os
 import urllib.request
@@ -39,24 +40,20 @@ THEMES = {
     },
 }
 
-# A small pixel dragon (adopt one on Skillxgames). P=pink, M=mint, Y=yellow, I=ink
-DRAGON = [
-    "....MM......",
-    "...MMMM.....",
-    "..MMIMMM....",
-    "..MMMMMMY...",
-    "...MMMM.....",
-    "..PMMMMMM...",
-    ".PPMMMMMMM..",
-    "PP.MMMMMMMM.",
-    "...MM..MMMMM",
-    "...MM...MM.M",
-]
+def mascot(x, y, height):
+    """Embed assets/mascot.png (GitHub won't load external images from an SVG)."""
+    src = ROOT / "assets" / "mascot.png"
+    data = base64.b64encode(src.read_bytes()).decode()
+    width = round(height * 341 / 440)
+    return (
+        f'<ellipse cx="{x + width / 2:.0f}" cy="{y + height - 4}" rx="{width * 0.36:.0f}" ry="8" fill="#000" opacity="0.12"/>'
+        f'<image x="{x}" y="{y}" width="{width}" height="{height}" href="data:image/png;base64,{data}"/>'
+    )
 
 
 def svg(w: int, h: int, body: str, title: str) -> str:
     return (
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" '
+        f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="{w}" height="{h}" '
         f'viewBox="0 0 {w} {h}" role="img" aria-label="{escape(title)}">'
         f"<title>{escape(title)}</title>{body}</svg>\n"
     )
@@ -81,16 +78,6 @@ def dot_grid(w, h, color, step=24):
     )
 
 
-def pixel_art(rows, x0, y0, px, t):
-    colors = {"P": t["pink"], "M": t["mint"], "Y": t["yellow"], "I": t["ink"]}
-    out = []
-    for r, row in enumerate(rows):
-        for c, ch in enumerate(row):
-            if ch in colors:
-                out.append(f'<rect x="{x0 + c * px}" y="{y0 + r * px}" width="{px}" height="{px}" fill="{colors[ch]}"/>')
-    return "".join(out)
-
-
 def frame(w, h, t, r=18):
     return (
         f'<rect x="1" y="1" width="{w-2}" height="{h-2}" rx="{r}" fill="{t["bg"]}" '
@@ -112,8 +99,8 @@ def hero(t, mode):
     b.append(f'<rect x="60" y="300" width="560" height="10" rx="5" fill="{t["line"]}"/>')
     b.append(f'<rect x="60" y="300" width="400" height="10" rx="5" fill="{t["mint"]}"/>')
     b.append(text(60, 340, "LVL 99 · LEARNING MODE: ON", 14, t["muted"], MONO, 700, extra='letter-spacing="2"'))
-    b.append(pixel_art(DRAGON, 880, 70, 22, t))
-    for i, (x, y) in enumerate([(840, 300), (1110, 90), (1130, 300)]):
+    b.append(mascot(880, 26, 330))
+    for i, (x, y) in enumerate([(836, 120), (1120, 70), (1140, 280)]):
         c = [t["yellow"], t["pink"], t["violet"]][i]
         b.append(f'<rect x="{x}" y="{y}" width="12" height="12" fill="{c}"/>')
     write(f"hero-{mode}.svg", svg(w, h, "".join(b), title))
@@ -121,7 +108,7 @@ def hero(t, mode):
     # phone version
     w, h = 600, 520
     b = [frame(w, h, t, 22), dot_grid(w, h, t["grid"])]
-    b.append(pixel_art(DRAGON, 210, 40, 15, t))
+    b.append(mascot(234, 24, 180))
     b.append(f'<rect x="40" y="226" width="150" height="34" rx="6" fill="{t["pink"]}"/>')
     b.append(text(115, 249, "▶ PRESS START", 15, "#FFFFFF", MONO, 700, "middle"))
     b.append(text(40, 320, "Bonjour,", 52, t["ink"], SANS, 800))
