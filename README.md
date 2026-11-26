@@ -2,9 +2,10 @@
 
 <p align="center">
 <a href="https://angelinepoitout.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/badge-website-dark.svg"><img src="assets/badge-website-light.svg" height="44" alt="angelinepoitout.com"></picture></a>
-<a href="https://linkedin.com/AngelinePoitout"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/badge-linkedin-dark.svg"><img src="assets/badge-linkedin-light.svg" height="44" alt="LinkedIn"></picture></a>
+<a href="https://www.linkedin.com/in/angelinepoitoutpro/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/badge-linkedin-dark.svg"><img src="assets/badge-linkedin-light.svg" height="44" alt="LinkedIn"></picture></a>
 <a href="https://skillxtube.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/badge-skillxtube-dark.svg"><img src="assets/badge-skillxtube-light.svg" height="44" alt="Skillxtube"></picture></a>
 <a href="https://skillxgames.com/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/badge-skillxgames-dark.svg"><img src="assets/badge-skillxgames-light.svg" height="44" alt="Skillxgames"></picture></a>
+<a href="https://www.youtube.com/@skillxgames"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/badge-youtube-dark.svg"><img src="assets/badge-youtube-light.svg" height="44" alt="YouTube @skillxgames"></picture></a>
 </p>
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/whoami-dark.svg"><img src="assets/whoami-light.svg" width="100%" alt="whoami: Angéline Poitout, founder of Skillxtube and Skillxgames"></picture>
@@ -15,6 +16,14 @@
 <a href="https://skillxgames.com/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-skillxgames-dark.svg"><img src="assets/card-skillxgames-light.svg" width="49%" alt="Skillxgames: retro arcade edutainment, 299 small games for sharp minds"></picture></a>
 <a href="https://skillxtube.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-skillxtube-dark.svg"><img src="assets/card-skillxtube-light.svg" width="49%" alt="Skillxtube: AI-powered learning ecosystem"></picture></a>
 </p>
+
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/section-videos-dark.svg"><img src="assets/section-videos-light.svg" width="100%" alt="Latest videos"></picture>
+
+<!-- videos:start -->
+<p align="center">
+<a href="https://www.youtube.com/@skillxgames"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/video-1-dark.svg"><img src="assets/video-1-light.svg" width="32%" alt="YouTube @skillxgames"></picture></a>
+</p>
+<!-- videos:end -->
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/section-activity-dark.svg"><img src="assets/section-activity-light.svg" width="100%" alt="Player activity"></picture>
 
@@ -30,4 +39,4 @@
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/toolkit-dark.svg"><img src="assets/toolkit-light.svg" width="100%" alt="Python, JavaScript, TypeScript, React, Next.js, FastAPI, Supabase, APIs, LLMs, AI Agents, Automation, Learning Design"></picture>
 
-<p align="center"><sub>Small games for sharp minds · stats redrawn every night by a GitHub Action · <a href="https://angelinepoitout.com">angelinepoitout.com</a></sub></p>
+<p align="center"><sub>Small games for sharp minds · stats and videos redrawn every night by a GitHub Action · <a href="https://angelinepoitout.com">angelinepoitout.com</a></sub></p>
