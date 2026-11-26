@@ -13,12 +13,17 @@ from __future__ import annotations
 import datetime as dt
 import base64
 import json
+import re
+import textwrap
+import xml.etree.ElementTree as ET
 import os
 import urllib.request
 from html import escape
 from pathlib import Path
 
 LOGIN = os.environ.get("PROFILE_LOGIN", "Angelinei")
+YT_HANDLE = "skillxgames"
+YT_URL = f"https://www.youtube.com/@{YT_HANDLE}"
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "assets"
 
@@ -122,13 +127,14 @@ def hero(t, mode):
 BADGES = [
     ("website", "◆", "angelinepoitout.com"),
     ("linkedin", "in", "LinkedIn"),
-    ("skillxtube", "▶", "Skillxtube"),
+    ("skillxtube", "★", "Skillxtube"),
     ("skillxgames", "◉", "Skillxgames"),
+    ("youtube", "▶", "YouTube @skillxgames"),
 ]
 
 
 def badges(t, mode):
-    accents = [t["violet"], t["pink"], t["mint"], t["yellow"]]
+    accents = [t["violet"], t["pink"], t["mint"], t["yellow"], "#FF0033"]
     for (slug, icon, label), acc in zip(BADGES, accents):
         w = 64 + int(len(label) * 9.6)
         h = 44
@@ -145,6 +151,7 @@ SECTIONS = {
     "background": "BACKGROUND",
     "toolkit": "TOOLKIT",
     "activity": "PLAYER ACTIVITY",
+    "videos": "LATEST VIDEOS",
 }
 
 
@@ -377,6 +384,107 @@ def heatmap(t, mode, s):
     write(f"activity-{mode}.svg", svg(w, h, "".join(b), title))
 
 
+# ---------------------------------------------------------------- YouTube
+VIDEO_CACHE = OUT / "videos.json"
+UA = {"User-Agent": "Mozilla/5.0 (profile-readme bot)", "Accept-Language": "en"}
+
+
+def get(url, timeout=30):
+    req = urllib.request.Request(url, headers={**UA, "Cookie": "CONSENT=YES+1"})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return r.read()
+
+
+def fetch_videos(n=3):
+    """Latest uploads from the channel's public RSS feed, thumbnails inlined."""
+    cid = os.environ.get("YT_CHANNEL_ID")
+    if not cid:
+        page = get(YT_URL).decode("utf-8", "replace")
+        m = (re.search(r'"externalId":"(UC[\w-]{22})"', page)
+             or re.search(r'channel_id=(UC[\w-]{22})', page)
+             or re.search(r'"channelId":"(UC[\w-]{22})"', page))
+        if not m:
+            raise RuntimeError("channel id not found on " + YT_URL)
+        cid = m.group(1)
+    feed = ET.fromstring(get(f"https://www.youtube.com/feeds/videos.xml?channel_id={cid}"))
+    ns = {"a": "http://www.w3.org/2005/Atom", "yt": "http://www.youtube.com/xml/schemas/2015"}
+    videos = []
+    for e in feed.findall("a:entry", ns):
+        vid = e.findtext("yt:videoId", namespaces=ns)
+        link = e.find("a:link", ns).get("href", f"https://www.youtube.com/watch?v={vid}")
+        if "/shorts/" in link:
+            continue  # keep the long-form videos for the cards
+        thumb = base64.b64encode(get(f"https://i.ytimg.com/vi/{vid}/mqdefault.jpg")).decode()
+        videos.append({"id": vid, "title": e.findtext("a:title", namespaces=ns),
+                       "date": e.findtext("a:published", namespaces=ns)[:10],
+                       "url": link, "thumb": thumb})
+        if len(videos) == n:
+            break
+    return videos
+
+
+def load_videos():
+    try:
+        videos = fetch_videos()
+        VIDEO_CACHE.write_text(json.dumps(videos), encoding="utf-8")
+        return videos
+    except Exception as e:  # YouTube hiccup: keep the last good set
+        print(f"videos fetch failed ({e}); using cache")
+        if VIDEO_CACHE.exists():
+            return json.loads(VIDEO_CACHE.read_text(encoding="utf-8"))
+        return []
+
+
+def video_card(t, mode, i, v):
+    w, h, pad = 380, 340, 16
+    tw, th = w - 2 * pad, round((w - 2 * pad) * 9 / 16)
+    accent = [t["pink"], t["violet"], t["mint"]][i % 3]
+    b = [f'<defs><clipPath id="c"><rect x="{pad}" y="{pad}" width="{tw}" height="{th}" rx="12"/></clipPath></defs>',
+         f'<rect x="1" y="1" width="{w-2}" height="{h-2}" rx="18" fill="{t["panel"]}" stroke="{t["line"]}" stroke-width="2"/>']
+    if v:
+        b.append(f'<image x="{pad}" y="{pad}" width="{tw}" height="{th}" preserveAspectRatio="xMidYMid slice" '
+                 f'clip-path="url(#c)" href="data:image/jpeg;base64,{v["thumb"]}"/>')
+        title = v["title"]
+        meta = dt.date.fromisoformat(v["date"]).strftime("%d %b %Y").upper() + " · YOUTUBE"
+    else:
+        b.append(f'<rect x="{pad}" y="{pad}" width="{tw}" height="{th}" rx="12" fill="{t["bg"]}"/>')
+        b.append(dot_grid(w, h, t["grid"]).replace('<rect width="380" height="340"',
+                 f'<rect x="{pad}" y="{pad}" width="{tw}" height="{th}" clip-path="url(#c)"'))
+        title = "New videos loading… subscribe to @skillxgames"
+        meta = "YOUTUBE"
+    # pixel play button
+    px, py = pad + tw - 58, pad + th - 52
+    b.append(f'<rect x="{px}" y="{py}" width="44" height="38" rx="8" fill="{accent}"/>')
+    b.append(f'<path d="M{px+17} {py+10} L{px+30} {py+19} L{px+17} {py+28} Z" fill="#FFFFFF"/>')
+    lines = textwrap.wrap(title, 30)[:2]
+    if len(textwrap.wrap(title, 30)) > 2:
+        lines[1] = lines[1][:28].rstrip() + "…"
+    for k, line in enumerate(lines):
+        b.append(text(pad + 4, pad + th + 38 + k * 26, line, 19, t["ink"], SANS, 700))
+    b.append(f'<rect x="{pad + 4}" y="{h - 40}" width="10" height="10" fill="{accent}"/>')
+    b.append(text(pad + 22, h - 31, meta, 12, t["muted"], MONO, 700, extra='letter-spacing="1"'))
+    write(f"video-{i + 1}-{mode}.svg", svg(w, h, "".join(b), title))
+
+
+def readme_videos(videos):
+    """Rewrite the README block between the videos markers."""
+    readme = ROOT / "README.md"
+    if not readme.exists():
+        return
+    items = videos or [None]
+    cells = []
+    for i, v in enumerate(items):
+        href = v["url"] if v else YT_URL
+        alt = escape(v["title"] if v else "YouTube @skillxgames", quote=True)
+        cells.append(
+            f'<a href="{href}"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/video-{i + 1}-dark.svg">'
+            f'<img src="assets/video-{i + 1}-light.svg" width="32%" alt="{alt}"></picture></a>')
+    block = "<!-- videos:start -->\n<p align=\"center\">\n" + "\n".join(cells) + "\n</p>\n<!-- videos:end -->"
+    s = readme.read_text(encoding="utf-8")
+    s = re.sub(r"<!-- videos:start -->.*?<!-- videos:end -->", lambda _: block, s, flags=re.S)
+    readme.write_text(s, encoding="utf-8")
+
+
 def main():
     OUT.mkdir(exist_ok=True)
     try:
@@ -386,6 +494,7 @@ def main():
             raise
         print(f"stats fetch failed ({e}); drawing placeholders")
         stats = None
+    videos = load_videos()
     for mode, t in THEMES.items():
         hero(t, mode)
         badges(t, mode)
@@ -396,6 +505,9 @@ def main():
         toolkit(t, mode)
         stats_card(t, mode, stats)
         heatmap(t, mode, stats)
+        for i, v in enumerate(videos or [None]):
+            video_card(t, mode, i, v)
+    readme_videos(videos)
     print("live stats:" if stats else "no token: placeholders drawn", stats and stats["total"])
 
 

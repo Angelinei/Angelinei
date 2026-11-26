@@ -33,7 +33,7 @@ Toolkit: Python · JavaScript · TypeScript · React · Next.js · FastAPI · Su
 
 Let's talk if you're building the future of learning, need a learning designer who speaks AI, or just want to beat my high score.
 
-🌐 angelinepoitout.com · skillxtube.com · skillxgames.com
+🌐 angelinepoitout.com · skillxtube.com · skillxgames.com · youtube.com/@skillxgames
 
 ### FR
 
@@ -54,7 +54,7 @@ Outils : Python · JavaScript · TypeScript · React · Next.js · FastAPI · Su
 
 Parlons-en si vous construisez le futur de l'apprentissage, si vous cherchez une learning designer qui parle IA… ou si vous voulez battre mon high score.
 
-🌐 angelinepoitout.com · skillxtube.com · skillxgames.com
+🌐 angelinepoitout.com · skillxtube.com · skillxgames.com · youtube.com/@skillxgames
 
 ---
 
