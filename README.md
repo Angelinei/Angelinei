@@ -2,7 +2,7 @@
 
 <p align="center">
 <a href="https://angelinepoitout.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/badge-website-dark.svg"><img src="assets/badge-website-light.svg" height="44" alt="angelinepoitout.com"></picture></a>
-<a href="https://linkedin.com/AngelinePoitout"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/badge-linkedin-dark.svg"><img src="assets/badge-linkedin-light.svg" height="44" alt="LinkedIn"></picture></a>
+<a href="https://www.linkedin.com/in/angelinepoitoutpro/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/badge-linkedin-dark.svg"><img src="assets/badge-linkedin-light.svg" height="44" alt="LinkedIn"></picture></a>
 <a href="https://skillxtube.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/badge-skillxtube-dark.svg"><img src="assets/badge-skillxtube-light.svg" height="44" alt="Skillxtube"></picture></a>
 <a href="https://skillxgames.com/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/badge-skillxgames-dark.svg"><img src="assets/badge-skillxgames-light.svg" height="44" alt="Skillxgames"></picture></a>
 </p>
