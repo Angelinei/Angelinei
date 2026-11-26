@@ -1,32 +1,33 @@
-# Angéline Poitout
+<a href="https://angelinepoitout.com"><picture><source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="assets/hero-dark-mobile.svg"><source media="(max-width: 600px)" srcset="assets/hero-light-mobile.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg"><img src="assets/hero-light.svg" width="100%" alt="Bonjour, I'm Angéline. Building learning products where EdTech meets AI."></picture></a>
 
-### Learning & EdTech
+<p align="center">
+<a href="https://angelinepoitout.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/badge-website-dark.svg"><img src="assets/badge-website-light.svg" height="44" alt="angelinepoitout.com"></picture></a>
+<a href="https://linkedin.com/AngelinePoitout"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/badge-linkedin-dark.svg"><img src="assets/badge-linkedin-light.svg" height="44" alt="LinkedIn"></picture></a>
+<a href="https://skillxtube.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/badge-skillxtube-dark.svg"><img src="assets/badge-skillxtube-light.svg" height="44" alt="Skillxtube"></picture></a>
+<a href="https://skillxgames.com/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/badge-skillxgames-dark.svg"><img src="assets/badge-skillxgames-light.svg" height="44" alt="Skillxgames"></picture></a>
+</p>
 
-When Edtech meet AI
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/whoami-dark.svg"><img src="assets/whoami-light.svg" width="100%" alt="whoami: Angéline Poitout, founder of Skillxtube and Skillxgames"></picture>
 
-## Currently building
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/section-building-dark.svg"><img src="assets/section-building-light.svg" width="100%" alt="What I'm building"></picture>
 
-**Skillxgames** - A retro arcade sauce Edutainment - 299 games, a community, a feed, record everything, adopt a dragon... Adult swim inspiration direction, small games for sharp minds.
-And his elder brother : **Skillxtube** — an AI-powered learning ecosystem that transforms online content into structured learning paths.
+<p align="center">
+<a href="https://skillxgames.com/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-skillxgames-dark.svg"><img src="assets/card-skillxgames-light.svg" width="49%" alt="Skillxgames: retro arcade edutainment, 299 small games for sharp minds"></picture></a>
+<a href="https://skillxtube.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-skillxtube-dark.svg"><img src="assets/card-skillxtube-light.svg" width="49%" alt="Skillxtube: AI-powered learning ecosystem"></picture></a>
+</p>
 
-## Background
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/section-activity-dark.svg"><img src="assets/section-activity-light.svg" width="100%" alt="Player activity"></picture>
 
-**Founder & AI Product Builder — Skillxtube**
-Building AI-powered learning products for the international EdTech market.
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/stats-dark.svg"><img src="assets/stats-light.svg" width="100%" alt="GitHub stats"></picture>
 
-**Freelance Learning Consultant / Instructional Designer**
-Learning design, instructional design, curriculum development, assessment and EdTech consulting.
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/activity-dark.svg"><img src="assets/activity-light.svg" width="100%" alt="Contribution graph for the last year"></picture>
 
-**Digital Product & Communication Experience**
-Experience across EdTech, digital products, content, marketing and project management, including work with startups, institutions and education organizations.
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/section-background-dark.svg"><img src="assets/section-background-light.svg" width="100%" alt="Background"></picture>
 
-## Tech
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/background-dark.svg"><img src="assets/background-light.svg" width="100%" alt="Founder & AI Product Builder at Skillxtube; Freelance Learning Consultant / Instructional Designer; Digital Product & Communication experience"></picture>
 
-`Python` · `JavaScript` · `TypeScript` · `React` · `Next.js` · `FastAPI` · `Supabase` · `APIs` · `LLMs` · `AI Agents` · `Automation`
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/section-toolkit-dark.svg"><img src="assets/section-toolkit-light.svg" width="100%" alt="Toolkit"></picture>
 
-## Connect
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/toolkit-dark.svg"><img src="assets/toolkit-light.svg" width="100%" alt="Python, JavaScript, TypeScript, React, Next.js, FastAPI, Supabase, APIs, LLMs, AI Agents, Automation, Learning Design"></picture>
 
-* Website: https://angelinepoitout.com
-* LinkedIn: https://linkedin.com/AngelinePoitout
-* Skillxtube: https://skillxtube.com
-* Skillxgames: https://skillxgames.com/
+<p align="center"><sub>Small games for sharp minds · stats redrawn every night by a GitHub Action · <a href="https://angelinepoitout.com">angelinepoitout.com</a></sub></p>
